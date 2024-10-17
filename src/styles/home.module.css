@@ -1,0 +1,63 @@
+.cardProfile:hover {
+  filter: brightness(0.8);
+}
+
+.imageProfile {
+  width: auto;
+}
+
+.imageProfile > img {
+  width: 200px;
+  object-fit: cover;
+}
+
+@media (max-width: 1000px) {
+  .imageProfile > img {
+    width: 150px;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 780px) {
+  .fontProfile {
+    font-size: 1rem;
+  }
+
+  .truncate {
+    width: 350px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .imageProfile > img {
+    width: 100px;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 580px) {
+  .truncate {
+    width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .imageProfile > img {
+    width: 70px;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 400px) {
+  .truncate {
+    width: 150px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}
