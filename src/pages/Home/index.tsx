@@ -11,7 +11,6 @@ export default function Home() {
       <div
         className="bg-dark w-100 h-100 border border-light-subtle border-4 rounded-3 my-2
         me-2 ms-1 p-1"
-
       >
         {teste.length === 0 ? (
           <div className="h-100 d-flex justify-content-center align-items-center">
@@ -26,7 +25,6 @@ export default function Home() {
             <CardProfile />
             <CardProfile />
             <CardProfile />
-
           </div>
         )}
       </div>
