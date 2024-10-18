@@ -1,5 +1,5 @@
 import { CardRepository } from './components/CardRepository';
-import { HeaderProfile } from './components/HeaderProfile';
+import { HeaderProfile } from '../../components/HeaderProfile';
 
 import styles from '../../styles/profile.module.css'
 
@@ -24,7 +24,7 @@ export default function Profile() {
               />
               <div className={`d-flex flex-row align-items-center mx-2 ${styles.sortButtons}`}>
                 <button type="button" className="fw-bold fs-6 ms-2">Mais estrelas</button>
-                <button type="button" className="fw-bold fs-6">Ultimos updates</button>
+                <button type="button" className="fw-bold fs-6">Últimos updates</button>
               </div>
             </div>
           </div>

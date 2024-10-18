@@ -2,26 +2,6 @@
   filter: brightness(0.8);
 }
 
-.imageProfile {
-  width: fit-content;
-  height: auto;
-}
-
-.imageProfile > img {
-  width: 200px;
-  object-fit: cover;
-}
-
-.fontProfile > div > div {
-  display: flex;
-  flex-direction: row;
-}
-
-.fontProfile > div > div > span + span::before {
-  content: " | ";
-  margin: 0 5px;
-}
-
 .sortButtons > button {
   padding: 8px 12px;
   background: #343434;
@@ -35,47 +15,4 @@
 
 .sortButtons > button:hover {
   filter: brightness(1.4);
-}
-
-@media (max-width: 1000px) {
-  .imageProfile > img {
-    height: 100%;
-    object-fit: cover;
-  }
-}
-
-@media (max-width: 780px) {
-  .fontProfile {
-    font-size: 1rem;
-  }
-
-  .imageProfile > img {
-    object-fit: cover;
-  }
-}
-
-@media (max-width: 680px) {
-  .fontProfile > div > div > span + span::before {
-    content: "";
-    margin: 0;
-  }
-  .fontProfile > div > div {
-    flex-direction: column;
-  }
-}
-
-@media (max-width: 580px) {
-  .fontProfile {
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
-  .imageProfile > img {
-    width: 100px;
-  }
-}
-
-@media (max-width: 400px) {
-  .fontProfile {
-    font-size: 0.6rem;
-  }
 }

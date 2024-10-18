@@ -1,8 +1,9 @@
 import { StarIcon } from "@primer/octicons-react";
+import { Link } from "react-router-dom";
 
 export function CardRepository() {
   return (
-    <div
+    <Link to='/repository'
       className="bg-light-subtle d-flex flex-column border border-light-subtle border-4 d-flex w-90 rounded-3 my-2 ms-2 me-1 p-2 hover-shadow fw-medium"
       style={{ maxHeight: "320px" }}
     >
@@ -14,6 +15,6 @@ export function CardRepository() {
       </div>
       <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.</p>
       <span className="fw-semibold text-end"> Update jan 10</span>
-    </div>
+    </Link>
   );
 }

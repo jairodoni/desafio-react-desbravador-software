@@ -1,0 +1,16 @@
+.rodape {
+  display: flex;
+  justify-content: space-between;
+}
+
+@media (max-width: 560px) {
+  .rodape {
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+
+  .rodape > div {
+    margin-bottom: 10px;
+  }
+}
