@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import styles from '../../styles/repository.module.css'
 
 export default function Repository() {
-  const featuresList = ["Javascript"]
   return (
     <div className="container-xxl mh-75 d-flex flex-column justify-content-start"
       style={{ height: "75vh" }}

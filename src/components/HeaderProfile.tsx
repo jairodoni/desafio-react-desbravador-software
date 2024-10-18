@@ -1,4 +1,17 @@
-export function HeaderProfile() {
+interface User {
+  name: string
+  avatar_url: string
+  followers: number
+  following: number
+  email: string
+  bio: string
+}
+
+interface HeaderProfileProps {
+  user: User
+}
+
+export function HeaderProfile({ user }: HeaderProfileProps) {
   return (
     <div
       className="bg-light-subtle d-flex flex-row border border-light-subtle border-4 d-flex w-90 rounded-3 my-2 ms-2 me-1 p-2 hover-shadow"
@@ -13,20 +26,18 @@ export function HeaderProfile() {
       </div>
 
       <div className="container-sm  d-flex flex-column justify-content-between text-sm fontProfile" >
-        <span className="fw-bold fs-1">Jairo Doni</span>
+        <span className="fw-bold fs-1">{user.name}</span>
 
 
 
         <div className="h-100 d-flex flex-column justify-content-around">
           <div>
-            <span>exemplo@email.com</span>
-            <span>Seguidores 100</span>
-            <span>Seguindo 100</span>
+            <span>Email: {user.email}</span>
+            <span>Seguidores {user.followers}</span>
+            <span>Seguindo {user.following}</span>
           </div>
           <p>
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-            when an unknown.
+            {user.bio}
           </p>
         </div>
       </div>

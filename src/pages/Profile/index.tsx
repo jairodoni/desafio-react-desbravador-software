@@ -2,11 +2,14 @@ import { CardRepository } from './components/CardRepository';
 import { HeaderProfile } from '../../components/HeaderProfile';
 
 import styles from '../../styles/profile.module.css'
+import { useProfileGitHub } from '../../hooks/useProfileGitHub';
 
 export default function Profile() {
+  const { user } = useProfileGitHub();
+
   return (
     <main className="container-xxl d-flex flex-column h-100">
-      <HeaderProfile />
+      <HeaderProfile user={user} />
       <div
         className="bg-dark w-100 h-100 border border-light-subtle border-4 rounded-3 my-2
         me-2 ms-1 p-1"
