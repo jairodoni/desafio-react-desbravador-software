@@ -27,7 +27,7 @@ export default function Profile() {
   const navigate = useNavigate()
 
   useEffect(() => {
-    if (Object.keys(user).length === 0) {
+    if (typeof user === "undefined") {
       navigate('/')
     }
 
@@ -48,30 +48,33 @@ export default function Profile() {
 
       return repositoriesSort
     }
-
   }
 
   async function searchRepositories() {
     setRepositories([])
-    const repositoriesListed = await api.get(`/users/${user.nickname}/repos`)
+    if (typeof user !== "undefined") {
+      const repositoriesListed = await api.get(`/users/${user.nickname}/repos`)
 
-    if (repositoriesListed?.status === 200 && repositoriesListed?.data?.length > 0) {
-      const listRepositoriesFormatted = repositoriesListed.data.map((repo) => ({
-        nameRepository: repo.name,
-        stars: repo.stargazers_count,
-        technology: repo.language,
-        description: repo.description,
-        linkRepository: repo.html_url,
-        lastUpdateDate: repo.updated_at
-      }))
+      if (repositoriesListed?.status === 200 && repositoriesListed?.data?.length > 0) {
+        const listRepositoriesFormatted = repositoriesListed.data.map((repo) => ({
+          nameRepository: repo.name,
+          stars: repo.stargazers_count,
+          technology: repo.language,
+          description: repo.description,
+          linkRepository: repo.html_url,
+          lastUpdateDate: repo.updated_at
+        }))
 
-      setRepositories(listRepositoriesFormatted)
+        setRepositories(listRepositoriesFormatted)
+      }
     }
   }
 
   return (
     <main className="container-xxl d-flex flex-column h-100">
-      <HeaderProfile user={user} />
+      {
+        typeof user !== "undefined" && < HeaderProfile user={user} />
+      }
       <div
         className="bg-dark w-100 h-100 border border-light-subtle border-4 rounded-3 my-2
         me-2 ms-1 p-1"

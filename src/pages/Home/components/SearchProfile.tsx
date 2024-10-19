@@ -30,7 +30,7 @@ export function SearchProfile() {
       return;
     }
 
-    setUser({})
+    setUser(undefined)
 
     const user = await api.get(`/users/${nameProfile}`);
 

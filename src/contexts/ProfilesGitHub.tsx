@@ -20,12 +20,12 @@ interface Repository {
 }
 
 interface ProfilesGitHubContextData {
-  user: User | object
-  setUser: (user: User | object) => void
+  user: User | undefined
+  setUser: (user: User | undefined) => void
   repositories: Repository[]
   setRepositories: (repositories: Repository[]) => void
-  repositorySelected: Repository
-  setRepositorySelected: (repository: Repository) => void
+  repositorySelected: Repository | undefined
+  setRepositorySelected: (repository: Repository | undefined) => void
 }
 
 interface ProfilesGitHubProviderProps {
@@ -35,9 +35,9 @@ interface ProfilesGitHubProviderProps {
 export const ProfilesGitHubContext = createContext({} as ProfilesGitHubContextData)
 
 export function ProfilesGitHubProvider({ children }: ProfilesGitHubProviderProps) {
-  const [user, setUser] = useState<User | object>({});
+  const [user, setUser] = useState<User>();
   const [repositories, setRepositories] = useState<Repository[] | []>([])
-  const [repositorySelected, setRepositorySelected] = useState<Repository>({})
+  const [repositorySelected, setRepositorySelected] = useState<Repository>()
 
   return (
     <ProfilesGitHubContext.Provider

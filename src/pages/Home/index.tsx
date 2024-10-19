@@ -17,7 +17,7 @@ export default function Home() {
         <div className="container-xxl mh-75 d-flex flex-column justify-content-start overflow-y-scroll"
           style={{ height: "75vh" }}
         >
-          {Object.keys(user).length > 0 ? (
+          {user !== undefined ? (
             <CardProfile user={user} />
           ) : (
             <div className="h-100 d-flex justify-content-center align-items-center">
