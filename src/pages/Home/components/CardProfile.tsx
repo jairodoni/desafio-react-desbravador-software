@@ -3,7 +3,7 @@ import styles from '../../../styles/home.module.css'
 
 interface User {
   name: string
-  avatar_url: string
+  avatarUrl: string
   followers: number
   following: number
   email: string
@@ -23,7 +23,7 @@ export function CardProfile({ user }: CardProfileProps) {
     >
       <div className={styles.imageProfile}>
         <img
-          src={user.avatar_url}
+          src={user.avatarUrl}
           className="rounded-3 float-start border-0 me-2 d-block"
           alt="profile image"
         />

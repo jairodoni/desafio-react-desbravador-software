@@ -1,6 +1,6 @@
 interface User {
   name: string
-  avatar_url: string
+  avatarUrl: string
   followers: number
   following: number
   email: string
@@ -19,7 +19,7 @@ export function HeaderProfile({ user }: HeaderProfileProps) {
     >
       <div className="imageProfile">
         <img
-          src="https://avatars.githubusercontent.com/u/38520302?v=4"
+          src={user.avatarUrl}
           className="rounded-3 float-start border-0 me-2 d-block"
           alt="profile image"
         />

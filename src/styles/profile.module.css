@@ -16,3 +16,8 @@
 .sortButtons > button:hover {
   filter: brightness(1.4);
 }
+
+.cardRepository:hover {
+  filter: brightness(0.8);
+  transition: filter 0.1s ease-in;
+}

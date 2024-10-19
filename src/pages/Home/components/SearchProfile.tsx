@@ -35,7 +35,17 @@ export function SearchProfile() {
     const user = await api.get(`/users/${nameProfile}`);
 
     if (user.status === 200) {
-      setUser({ ...user.data })
+      const userFormated = {
+        nickname: user.data.login,
+        name: user.data.name,
+        avatarUrl: user.data.avatar_url,
+        followers: user.data.followers,
+        following: user.data.following,
+        email: user.data.email,
+        bio: user.data.bio
+      }
+
+      setUser(userFormated)
     }
 
     reset()

@@ -1,17 +1,29 @@
 import { createContext, ReactNode, useState } from 'react';
 
 interface User {
+  nickname: string
   name: string
-  avatar_url: string
+  avatarUrl: string
   followers: number
   following: number
   email: string
   bio: string
 }
 
+interface Repository {
+  nameRepository: string
+  stars: number
+  technology: string
+  description: string
+  linkRepository: string
+  lastUpdateDate: Date
+}
+
 interface ProfilesGitHubContextData {
   user: User | object
   setUser: (user: User | object) => void
+  repositories: Repository[]
+  setRepositories: (repositories: Repository[]) => void
 }
 
 interface ProfilesGitHubProviderProps {
@@ -22,9 +34,17 @@ export const ProfilesGitHubContext = createContext({} as ProfilesGitHubContextDa
 
 export function ProfilesGitHubProvider({ children }: ProfilesGitHubProviderProps) {
   const [user, setUser] = useState<User | object>({});
+  const [repositories, setRepositories] = useState<Repository[] | []>([])
 
   return (
-    <ProfilesGitHubContext.Provider value={{ user, setUser }}>
+    <ProfilesGitHubContext.Provider
+      value={{
+        user,
+        setUser,
+        repositories,
+        setRepositories
+      }}
+    >
       {children}
     </ProfilesGitHubContext.Provider>
   )
