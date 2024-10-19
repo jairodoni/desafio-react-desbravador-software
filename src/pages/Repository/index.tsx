@@ -1,15 +1,40 @@
+import { useEffect, useState } from "react";
 import { ArrowLeftIcon, StarIcon } from "@primer/octicons-react";
+import { Link, useNavigate } from "react-router-dom";
+import { ptBR } from 'date-fns/locale';
+import { format } from "date-fns";
+import { useProfileGitHub } from "../../hooks/useProfileGitHub";
 import { HeaderProfile } from "../../components/HeaderProfile";
-import { Link } from "react-router-dom";
 
 import styles from '../../styles/repository.module.css'
 
 export default function Repository() {
+  const [dateLastUpdateRepositoryFormatted, setDateLastUpdateRepositoryFormatted] = useState("")
+
+  const navigate = useNavigate()
+
+  useEffect(() => {
+    if (Object.keys(user).length === 0) {
+      navigate('/')
+    } else {
+      setDateLastUpdateRepositoryFormatted(
+        format(
+          new Date(repositorySelected.lastUpdateDate),
+          'dd MMM yyyy',
+          {
+            locale: ptBR,
+          }
+        ))
+    }
+  }, [])
+
+  const { user, repositorySelected } = useProfileGitHub();
+
   return (
     <div className="container-xxl mh-75 d-flex flex-column justify-content-start"
       style={{ height: "75vh" }}
     >
-      <HeaderProfile />
+      <HeaderProfile user={user} />
       <div
         className="bg-dark w-100 h-100 border border-light-subtle border-4 rounded-3 my-2
         me-2 ms-1 px-3 py-1 fs-4 d-flex flex-column justify-content-around"
@@ -25,33 +50,34 @@ export default function Repository() {
         </div>
 
         <div className="d-flex flex-row justify-content-between">
-          <h3 className="fw-bold fs-3">Projeto Away</h3>
+          <h3 className="fw-bold fs-3">{repositorySelected.nameRepository}</h3>
 
           <div className=" d-flex flex-row align-items-center justify-content-between">
             <StarIcon size={16} />
             <span className="fw-semibold ps-2">
-              10
+              {repositorySelected.stars}
             </span>
           </div>
         </div>
 
-        {featuresList && (
-          <div>
-            <span className="fw-semibold">Linguagen: </span>
-            <span>Javascript</span>
+        <div>
+          <span className="fw-semibold">Linguagem: </span>
+          <span>{repositorySelected.technology}</span>
 
-          </div>
-        )}
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer.</p>
+        </div>
+
+        <p>{repositorySelected.description}</p>
 
         <div className={`fs-5 ${styles.rodape}`}>
           <div>
             <span>Repositorio GitHub: </span>
-            <a href="#" className="link-primary link-opacity-50-hover">
-              www.exemplorepositorio.com.br
+            <a href={repositorySelected.linkRepository} target="_blank" className="link-primary link-opacity-50-hover">
+              {repositorySelected.linkRepository}
             </a>
           </div>
-          <span className="fw-semibold text-end fs-5"> Update jan 10</span>
+          <span className="fw-semibold text-end fs-5">
+            {dateLastUpdateRepositoryFormatted}
+          </span>
         </div>
       </div>
     </div>
